@@ -10,6 +10,8 @@ limits = input("Enter number of tweets you want to scrape:\n")
 limits = int(limits)
 
 langs = "english"
+#user1 = PolitiFact
+#user2 = GossipCop
 
 tweets = query_tweets("news" , begindate=begin_date, enddate=end_date , limit=limits, lang=langs)
 
