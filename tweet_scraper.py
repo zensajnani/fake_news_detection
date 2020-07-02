@@ -13,8 +13,15 @@ langs = "english"
 #user1 = PolitiFact
 #user2 = GossipCop
 
-tweets = query_tweets("news" , begindate=begin_date, enddate=end_date , limit=limits, lang=langs)
+basic_tweets = query_tweets("#news" , begindate=begin_date, enddate=end_date , limit=limits, lang=langs)
+user1_tweets = query_tweets("@PolitiFact" , begindate= begin_date, enddate=end_date, limit=limits, lang=langs)
+user2_tweets = query_tweets("@GossipCop" , begindate= begin_date, enddate=end_date, limit=limits, lang=langs)
 
-df = pd.DataFrame(t.__dict__ for t in tweets)
-
+df = pd.DataFrame(b.__dict__ for b in basic_tweets)
 df.to_csv("C:/fake_news_detection/tweet.csv" , index= False)
+
+df1 = pd.DataFrame(u1.__dict__ for u1 in user1_tweets)
+df1.to_csv("C:/fake_news_detection/politifact.csv" , index= False)
+
+df2 = pd.DataFrame(u2.__dict__ for u2 in user2_tweets)
+df2.to_csv("C:/fake_news_detection/gossipcop.csv" , index= False)
