@@ -6,3 +6,4 @@ Untitled.ipynb
 __pycache__
 .ipynb_checkpoints
 App/__pycache__
+.DS_Store
