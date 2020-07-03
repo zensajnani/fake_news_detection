@@ -7,3 +7,4 @@ __pycache__
 .ipynb_checkpoints
 App/__pycache__
 .DS_Store
+App/pipeline1.sav
