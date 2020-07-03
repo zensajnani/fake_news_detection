@@ -22,6 +22,8 @@ def get_delay():
     query_news = result['news']
     # returns dictionary with language, original text and translated text
     translated_query = lang_translate(query_news)
+    cleaned_query = remove_punctuation_stopwords_lemma(
+        translated_query["final_text"])
     query = get_all_query(translated_query["final_text"])
     pred = pipeline.predict(query)
     print(pred)
@@ -33,7 +35,7 @@ def get_delay():
             print(real_news)
             return f'<html> <body> <h1> {pred} </h1> <h4> Text: {translated_query["original_text"]} </h4><h4> Language: {translated_query["source_lang"]} </h4><h4> Translated Text: {translated_query["final_text"]} </h4><h2> Real News Alternative: </h2><p> Title: {real_news["title"]} </p><p> Text: {real_news["text"]} </p><p> Link: {real_news["link"]} </p><p> Source: {real_news["source"]} </p><form action="/"> <button type="submit"> Fact Check another Article </button> </form> </body ></ html>'
 
-    return f'<html> <body> <h1> {pred} </h1> <h4> Text: {translated_query["original_text"]} </h4><h4> Language: {translated_query["source_lang"]} </h4><h4> Translated Text: {translated_query["final_text"]} </h4><form action="/"> <button type="submit"> Fact Check another Article </button> </form> </body ></ html>'
+    return f'<html> <body> <h1> {pred} </h1> <h4> Text: {translated_query["original_text"]} </h4><h4> Language: {translated_query["source_lang"]} </h4><h4> Translated Text: {translated_query["final_text"]} </h4><h4>Cleaned Text: {cleaned_query}</h4><form action="/"> <button type="submit"> Fact Check another Article </button> </form> </body ></ html>'
 
 
 if __name__ == '__main__':
