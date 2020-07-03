@@ -10,10 +10,11 @@ def get_real_news(title):
     query = title.lower().replace(" ", "+")
     all_articles = newsapi.get_everything(q=query, page=1)
     # create dictionary of real article title, text, and link
-    real_news = {
-        "title": all_articles["articles"][0]["title"],
-        "text": all_articles["articles"][0]["description"],
-        "link": all_articles["articles"][0]["url"],
-        "source": all_articles["articles"][0]["source"]["name"]
-    }
+    if all_articles["totalResults"] != 0:
+        real_news = {
+            "title": all_articles["articles"][0]["title"],
+            "text": all_articles["articles"][0]["description"],
+            "link": all_articles["articles"][0]["url"],
+            "source": all_articles["articles"][0]["source"]["name"]
+        }
     return real_news
