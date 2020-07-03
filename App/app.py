@@ -2,6 +2,7 @@ from flask import Flask, abort, jsonify, request, render_template
 import joblib
 from feature import *
 import json
+from find_real_news import get_real_news  # get real news from NewsAPI
 
 pipeline = joblib.load('./pipeline1.sav')
 
@@ -19,12 +20,19 @@ def get_delay():
 
     result = request.form
     query_news = result['news']
-    translated_query = lang_translate(
-        "कोरोना वायरस (COVID 19) महामारी की वजह से भारत समेत")
-    query = get_all_query(query_news)
+    # returns dictionary with language, original text and translated text
+    translated_query = lang_translate(query_news)
+    query = get_all_query(translated_query["final_text"])
     pred = pipeline.predict(query)
     print(pred)
-    return f'<html><body><h1>{pred}</h1> <br> <h3>{query}</h3><h4>{translated_query}</h4><form action="/"> <button type="submit">back </button> </form></body></html>'
+
+    # if news is fake, display alternative real news using NewsAPI
+    if pred == ['FAKE']:
+        real_news = get_real_news(translated_query["final_text"])
+        print(real_news)
+        return f'<html> <body> <h1> {pred} </h1> <h4> Text: {translated_query["original_text"]} </h4><h4> Language: {translated_query["source_lang"]} </h4><h4> Translated Text: {translated_query["final_text"]} </h4><h2> Real News Alternative: </h2><p> Title: {real_news["title"]} </p><p> Text: {real_news["text"]} </p><p> Link: {real_news["link"]} </p><p> Source: {real_news["source"]} </p><form action="/"> <button type="submit"> Fact Check another Article </button> </form> </body ></ html>'
+
+    return f'<html> <body> <h1> {pred} </h1> <h4> Text: {translated_query["original_text"]} </h4><h4> Language: {translated_query["source_lang"]} </h4><h4> Translated Text: {translated_query["final_text"]} </h4><form action="/"> <button type="submit"> Fact Check another Article </button> </form> </body ></ html>'
 
 
 if __name__ == '__main__':
