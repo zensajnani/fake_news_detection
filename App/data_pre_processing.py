@@ -7,15 +7,6 @@ from nltk.stem.porter import PorterStemmer
 from nltk.tokenize import word_tokenize
 import seaborn as sb
 
-test_filename = 'datasets/test.csv'
-train_filename = 'datasets/train.csv'
-valid_filename = 'datasets/valid.csv'
-
-
-train_news = pd.read_csv('datasets/test.csv')
-test_news = pd.read_csv('datasets/train.csv')
-valid_news = pd.read_csv('datasets/valid.csv')
-
 # GossipCop and PolitiFact
 
 gossipcop_fake = pd.read_csv('datasets/gossipcop_fake.csv')

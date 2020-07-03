@@ -1,1 +1,9 @@
 env/
+App/Untitled.ipynb
+App/Untitled1.ipynb
+App/Untitled2.ipynb
+Untitled.ipynb
+__pycache__
+.ipynb_checkpoints
+App/__pycache__
+.DS_Store
