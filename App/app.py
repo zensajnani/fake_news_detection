@@ -29,13 +29,8 @@ def get_delay():
     print(pred)
 
     # if news is fake, display alternative real news using NewsAPI
-    if pred == ['FAKE']:
-        real_news = get_real_news(translated_query["final_text"])
-        if real_news["totalResults"] != 0:
-            print(real_news)
-            return f'<html> <body> <h1> {pred} </h1> <h4> Text: {translated_query["original_text"]} </h4><h4> Language: {translated_query["source_lang"]} </h4><h4> Translated Text: {translated_query["final_text"]} </h4><h2> Real News Alternative: </h2><p> Title: {real_news["title"]} </p><p> Text: {real_news["text"]} </p><p> Link: {real_news["link"]} </p><p> Source: {real_news["source"]} </p><form action="/"> <button type="submit"> Fact Check another Article </button> </form> </body ></ html>'
-
-    return f'<html> <body> <h1> {pred} </h1> <h4> Text: {translated_query["original_text"]} </h4><h4> Language: {translated_query["source_lang"]} </h4><h4> Translated Text: {translated_query["final_text"]} </h4><h4>Cleaned Text: {cleaned_query}</h4><form action="/"> <button type="submit"> Fact Check another Article </button> </form> </body ></ html>'
+    real_news = get_real_news(translated_query["final_text"])
+    return render_template('resultpage.html', test="test2", pred=pred, translated_query=translated_query, cleaned_query=cleaned_query, real_news=real_news)
 
 
 if __name__ == '__main__':
