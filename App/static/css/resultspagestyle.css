@@ -1,13 +1,27 @@
 <style>
     /* Styling body */
+
+    hr.new4 {
+  border: 1px solid white;
+}
+
+
+
     body {
         font: "Roboto";
         text-align: center;
-        background: linear-gradient(to right, #0000ff, #add8e6);
+        background: linear-gradient(to right, #6c706f, #141414);
     }
 
     /* h1 tag text color */
     h1 {
       color: white;
     }
+
+
+    body, html {
+    height: 100%;
+}
+
+
     </style> 
