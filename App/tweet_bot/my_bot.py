@@ -21,6 +21,12 @@ CONSUMER_SECRET = 'YH6TOJIGRD81TzOkYXIZzG5wL0NRhHcqAvobL4bc27twfbJPdl'
 ACCESS_KEY = '1252588880596893696-2ockVNpr0iOA563EOyzPNlEvTStxGo'
 ACCESS_SECRET = 'J1ZDodrTNPMkAdkBIPUq2dcFzLs67TwoHnpxXQAsfsZP2'
 
+# CONSUMER_KEY = '4QDbYFkic0GWKucHNFiBlzVHi'
+# CONSUMER_SECRET = 'qH4NxgYgVDAZRwj4uwWm2hhTdNEwBxRjlrLOvpdEi1vkjovAme'
+# ACCESS_KEY = '1252588880596893696-2ockVNpr0iOA563EOyzPNlEvTStxGo'
+# ACCESS_SECRET = 'J1ZDodrTNPMkAdkBIPUq2dcFzLs67TwoHnpxXQAsfsZP2'
+
+
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
@@ -90,9 +96,10 @@ def reply_to_tweets():
 
 
 # In[33]:
-
-
 reply_to_tweets()
+# while True:
+#     reply_to_tweets()
+#     time.sleep(2)
 
 
 # In[ ]:
