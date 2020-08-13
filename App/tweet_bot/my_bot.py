@@ -8,6 +8,8 @@ import tweepy
 import time
 import joblib
 
+from secrets import CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET
+
 #Twitter Bot
 
 
@@ -15,16 +17,6 @@ import joblib
 
 
 print("This is my bot!")
-
-CONSUMER_KEY = 'YSyDCRJID0Cj9wGjjCUvkgTAc'
-CONSUMER_SECRET = 'YH6TOJIGRD81TzOkYXIZzG5wL0NRhHcqAvobL4bc27twfbJPdl'
-ACCESS_KEY = '1252588880596893696-2ockVNpr0iOA563EOyzPNlEvTStxGo'
-ACCESS_SECRET = 'J1ZDodrTNPMkAdkBIPUq2dcFzLs67TwoHnpxXQAsfsZP2'
-
-# CONSUMER_KEY = '4QDbYFkic0GWKucHNFiBlzVHi'
-# CONSUMER_SECRET = 'qH4NxgYgVDAZRwj4uwWm2hhTdNEwBxRjlrLOvpdEi1vkjovAme'
-# ACCESS_KEY = '1252588880596893696-2ockVNpr0iOA563EOyzPNlEvTStxGo'
-# ACCESS_SECRET = 'J1ZDodrTNPMkAdkBIPUq2dcFzLs67TwoHnpxXQAsfsZP2'
 
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
